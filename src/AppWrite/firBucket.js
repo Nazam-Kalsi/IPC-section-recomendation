@@ -1,33 +1,33 @@
 import config from "../configEnv/config";
 import { Databases, Client, ID } from "appwrite";
 
-class storage {
+class FIRservice {
   client;
   databases;
-  construntor() {
+  constructor() {
     this.client = new Client()
       .setEndpoint(config.appwriteEndPoint)
       .setProject(config.appwriteProjectId);
-    this.database = new Databases(this.client);
+    this.databases = new Databases(this.client);
   }
-  async submitFIR({ name, phoneNo, state, distict, date, fir, userId }) {
+  async submitFIR({ name, phoneNo, state, district, date, fir, userId }) {
     try {
-      return await databases.createDocument(
+      return await this.databases.createDocument(
         config.databaseId,
-        config.collectionIdUser,
+        config.collectionIdFir,
         ID.unique(),
         {
           name,
           phoneNo,
           state,
-          distict,
+          district,
           date,
           fir,
           userId,
         }
       );
     } catch (error) {
-      return error.message;
+      throw new Error(error);
     }
   }
 
@@ -45,13 +45,29 @@ class storage {
 
   async getFIR(id) {
     try {
-      return await databases.getDocument(
+      return await this.databases.getDocument(
         config.databaseId,
-        config.collectionIdUser,
+        config.collectionIdFir,
         id
       );
     } catch (error) {
       return error.message;
     }
   }
+
+  async allFIRs() {
+    try {
+      const data = await this.databases.listDocuments(
+        config.databaseId,
+        config.collectionIdFir
+      );
+      if (data) return data;
+      else return null;
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 }
+
+const firdata = new FIRservice();
+export default firdata;

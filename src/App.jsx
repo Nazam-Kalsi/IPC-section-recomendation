@@ -1,26 +1,24 @@
-import { useState } from "react";
+import { Application } from "@splinetool/runtime";
+import Spline from "@splinetool/react-spline";
 import "./App.css";
-import { Application } from '@splinetool/runtime';
-import auth from './AppWrite.auth';
+import auth from "./AppWrite/auth";
+import { Outlet } from "react-router-dom";
+import { Footer, Header, Container } from "./components/comp";
 
-import Spline from '@splinetool/react-spline';
+// const urlParams = new URLSearchParams(window.location.search);
+// const secret = urlParams.get("secret");
+// const userId = urlParams.get("userId");
+// auth.emailVerification(userId, secret);
 
-const urlParams = new URLSearchParams(window.location.search);
-const secret = urlParams.get('secret');
-const userId = urlParams.get('userId');
-auth.emailVerification(userId, secret);
-  
-  
-  function App() {
-    const [count, setCount] = useState(0);
-    return (
-      <>
-      <div>
-      </div>  
-
-
+function App() {
+  return (
+    <>
+      <Header />
+      <Container>
+        <Outlet />
+      </Container>
+      <Footer />
     </>
-    
   );
 }
 

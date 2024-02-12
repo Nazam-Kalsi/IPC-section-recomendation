@@ -1,7 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authreducer from "./userSlice"
-export default store = configureStore({
+const store = configureStore({
     reducer:{
         authreducer
     }
 });
+
+export default store;

@@ -1,4 +1,4 @@
-import { Client, Account, ID } from "appwrite";
+import { Client, Account,ID} from "appwrite";
 import config from "../configEnv/config";
 
 class authentication {
@@ -11,28 +11,26 @@ class authentication {
     this.account = new Account(this.client);
   }
 
-  async signup({ firstname, lastname, phone, addahar, email, password }) {
+  async signup( email, password, name ) {
     try {
-      let newUser = await this.account.createSession(
+      let newUser = await this.account.create(
         ID.unique(),
         email,
         password,
-        firstname,
-        lastname,
-        phone,
-        addahar
+        name
       );
-      if (newUser) {
-        return await this.account.createVerification("https://localhost");
-      }
+      return newUser;
+      // if (newUser) {
+      //   return await this.account.createVerification("https://localhost");
+      // }
     } catch (error) {
       return error.message;
     }
   }
 
-  async emailVerification(userId, secret) {
-    return await this.account.updateVerification(userId, secret);
-  }
+  // async emailVerification(userId, secret) {
+  //   return await this.account.updateVerification(userId, secret);
+  // }
 
   async login({ email, password }) {
     try {
@@ -50,4 +48,5 @@ class authentication {
   }
 }
 
-export default auth=new authentication();
+const auth=new authentication();
+export default auth;
