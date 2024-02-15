@@ -11,6 +11,7 @@ function GetComplaint() {
   //     console.log(firs);
   //    setComplaints(firs.documents);
   //   })();
+  // useEffect(firs, [user]);
   useEffect(() => {
     async function firs() {
       const firs = await firdata.allFIRs()
@@ -20,7 +21,6 @@ function GetComplaint() {
     }
     firs()
   }, [user] )
-  // useEffect(firs, [user]);
 return complaints ? (<div>
         {
             complaints.map((individual)=>{

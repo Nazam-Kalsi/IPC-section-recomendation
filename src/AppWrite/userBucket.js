@@ -10,7 +10,7 @@ class user {
       .setProject(config.appwriteProjectId);
     this.databases = new Databases(this.client);
   }
-  storeData = async ({ firstname, lastname, addahar, phone, userid }) => {
+  storeData = async ({ firstname, lastname, addahar, phone, userid,userType='common'}) => {
     try {
       return await this.databases.createDocument(
         config.databaseId,
@@ -22,6 +22,7 @@ class user {
           addahar,
           phone,
           userid,
+          userType
         }
       );
     } catch (error) {

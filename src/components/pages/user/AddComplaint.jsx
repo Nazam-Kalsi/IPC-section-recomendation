@@ -5,7 +5,9 @@ import { Button, Input, Select } from "../../comp";
 import userData from "../../../AppWrite/userBucket";
 import firdata from "../../../AppWrite/firBucket";
 import { punjabDistricts, rajasthanDistricts } from "./district";
+import { useNavigate } from "react-router-dom";
 function AddComplaint() {
+  const navigate = useNavigate();
   const [state, setState] = useState();
   const [district, setDistrict] = useState([]);
   const user = useSelector((state) => state.authreducer.user);
@@ -16,12 +18,12 @@ function AddComplaint() {
       null;
     }
   }, [state]);
-  useEffect(()=>{
+  useEffect(() => {
     setValue("firstname", user?.firstname);
     setValue("lastname", user?.lastname);
     setValue("phoneNo", user?.phone);
-    setValue("date",new Date().toISOString().substring(0,10))
-  },[])
+    setValue("date", new Date().toISOString().substring(0, 10));
+  }, []);
 
   // const dispatch = useDispatch();
 
@@ -47,15 +49,16 @@ function AddComplaint() {
       ...data,
       name: data.firstname + " " + data.lastname,
       userId: user.$id,
+      phoneNo: data.phoneNo.toString(),
     });
-    await firdata.submitFIR({
-      ...data,
-      name: data.firstname + " " + data.lastname,
-      userId: user.$id,
+    // await firdata.submitFIR({
+    //   ...data,
+    //   name: data.firstname + " " + data.lastname,
+    //   userId: user.$id,
 
-      
-    });
-    alert("Your complaint has been registered");
+    // });
+    // alert("Your complaint has been registered");
+    // navigate("/userhome")
   };
   return (
     <div>
@@ -93,42 +96,56 @@ function AddComplaint() {
             },
           })}
         />
-        <p>{errors.phone?.message}</p>
+        <p className="text-red-500">{errors.phone?.message}</p>
         <Input
           label="Date"
           type="date"
           {...register("date", {
             required: {
               value: true,
-              message: "Please enter a date",
+              message: "Please select a date",
             },
           })}
         />
-        <p>{errors.date?.message}</p>
+        <p className="text-red-500">{errors.date?.message}</p>
         <Select
           label="State"
-          raw='select a state'
+          raw="select a state"
           options={["Punjab", "Rajasthan"]}
-          oc={(e) => setState(e.target.value)}
+          oc={(e) => {
+            setState(e.target.value);
+            setValue("state", e.target.value);
+          }}
           {...register("state", {
             required: {
               value: true,
               message: "Please select a distict",
             },
+            validate: {
+              select: (value) => value !== "select a state" || "select a state",
+            },
           })}
         />
+        <p className="text-red-500">{errors.district?.message}</p>
+
         <Select
           label="District"
-          raw='select a district'
-
+          raw="select a district"
+          oc={(e) => setValue("district", e.target.value)}
           options={district}
           {...register("district", {
             required: {
               value: true,
               message: "Please select a distict",
             },
+            validate: {
+              select: (value) =>
+                value !== "select a district" || "select a distict",
+            },
           })}
         />
+        <p className="text-red-500">{errors.district?.message}</p>
+
         <textarea
           id="txtArea"
           rows="10"
@@ -136,10 +153,12 @@ function AddComplaint() {
           {...register("fir", {
             required: {
               value: true,
-              message: "Please select Complaint",
+              message: "Please enter your Complaint",
             },
           })}
         ></textarea>
+                <p className="text-red-500">{errors.fir?.message}</p>
+
         <Button>Submit</Button>
       </form>
     </div>

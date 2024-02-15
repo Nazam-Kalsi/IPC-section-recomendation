@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 function AdminHome() {
   return (
     <div>
-      <Link to="">
+        <Link to="/allComplaints">
         <Button>View Complaints</Button>
       </Link>
-      <Link to="">
+        <Link to="/complaints">
         <Button>Update Complaints</Button>
       </Link>
     </div>

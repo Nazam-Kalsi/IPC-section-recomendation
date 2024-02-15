@@ -28,11 +28,13 @@ function Login() {
           await userData.storeData({ ...storedata, userid: current.$id });
         else {
           const userinfo = await userData.getInfo(current.$id);
-          if (userinfo) dispatch(setUser(userinfo));
+          if (userinfo) {
+            dispatch(setUser(userinfo));
+            dispatch(setUser(current));
+            if (userinfo?.userType == "common") navigate("/userhome");
+            else navigate("/adminhome");
+          }
         }
-        dispatch(setUser(current));
-
-        navigate("/userhome");
       }
     }
   };
