@@ -14,6 +14,7 @@ function App() {
   return (
     <>
       <Header />
+      {/* <Spline scene="https://prod.spline.design/sM1GVVO227D2jbh5/scene.splinecode" /> */}
       <Container>
         <Outlet />
       </Container>

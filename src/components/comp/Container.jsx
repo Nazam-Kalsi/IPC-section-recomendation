@@ -2,7 +2,7 @@ import React from 'react'
 
 function Container({children}) {
   return (
-    <div className=' min-h-[34rem] mt-2 border'>
+    <div className='min-h-[calc(50vh)]'>
         {children}
     </div>
   )

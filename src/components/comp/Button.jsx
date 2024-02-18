@@ -1,9 +1,9 @@
 import React from "react";
 
-function Button({ children, className = "", ...props }) {
+function Button({ children, className = "", onClick,...props}) {
   return (
     <>
-      <button className={`py-2 px-4 border hover:bg-blue-600 mx-4 rounded-md ${className}`}>
+      <button onClick={onClick} className={`py-2 border rounded-md ${className} bg-labelcol hover:bg-placeholderblue-300 text-white`}>
         {children}
       </button>
     </>

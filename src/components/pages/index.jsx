@@ -8,6 +8,7 @@ import AdminHome from "./admin/AdminHome";
 import Complaints from "./admin/Complaints";
 import IPCprovider from "./admin/IPCprovider";
 import ViewComplaints from "./admin/ViewComplaints";
+import MyInfo from "./user/MyInfo";
 export {
   Login,
   SignUp,
@@ -19,4 +20,5 @@ export {
   Complaints,
   IPCprovider,
   ViewComplaints,
+  MyInfo,
 };

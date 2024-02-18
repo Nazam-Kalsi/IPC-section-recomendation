@@ -10,7 +10,15 @@ class user {
       .setProject(config.appwriteProjectId);
     this.databases = new Databases(this.client);
   }
-  storeData = async ({ firstname, lastname, addahar, phone, userid,userType='common'}) => {
+  storeData = async ({
+    firstname,
+    lastname,
+    addahar,
+    phone,
+    userid,
+    userType = "common",
+    password
+  }) => {
     try {
       return await this.databases.createDocument(
         config.databaseId,
@@ -22,7 +30,8 @@ class user {
           addahar,
           phone,
           userid,
-          userType
+          userType,
+          password,
         }
       );
     } catch (error) {
@@ -37,12 +46,35 @@ class user {
         config.databaseId,
         config.collectionIdUser,
         dataid
-        );
-      } catch (error) {
-        throw new Error(error);
-      }
-    };
-  }
+      );
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
+
+  updateInfo = async (
+    id,
+     firstname, lastname, addahar, phone, userid, userType 
+  ) => {
+    try {
+      await this.databases.updateDocument(
+        config.databaseId,
+        config.collectionIdUser,
+        id,
+        {
+          firstname,
+          lastname,
+          addahar,
+          phone,
+          userid,
+          userType,
+        }
+      );
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
+}
 
 const userData = new user();
 export default userData;

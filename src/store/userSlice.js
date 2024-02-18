@@ -12,10 +12,11 @@ export const authSlice = createSlice({
     setUser: (state, action) => {
       if (state.user == null) {
         state.user = action.payload;
-      } else {
-        const user = {...(action.payload),...(state.user)};
-        state.user=user;
-      }
+      } 
+    
+      else {
+        state.user = {...(state.user),...(action.payload)};
+        }
       state.status = true;
     },
 
@@ -23,6 +24,7 @@ export const authSlice = createSlice({
       state.user = null;
       state.status = false;
     },
+    
   },
 });
 

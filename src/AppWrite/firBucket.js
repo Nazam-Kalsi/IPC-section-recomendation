@@ -67,6 +67,24 @@ class FIRservice {
       throw new Error(error);
     }
   }
+
+  updateFIR = async ({ id, fir, ipcSection,status='approved' }) => {
+    try {
+      let data = await this.databases.updateDocument(
+        config.databaseId,
+        config.collectionIdFir,
+        id,
+        {
+          fir,
+          ipcSection,
+          status
+        }
+      );
+      if(data )return data;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  };
 }
 
 const firdata = new FIRservice();
