@@ -16,7 +16,7 @@ export function Header() {
   const data = [
     {
       name: "Home",
-      link: "/home",
+      link: (user?.type=='admin')?"/adminhome":"/userhome",
       activation: user?.$id ? true : false,
     },
     {
