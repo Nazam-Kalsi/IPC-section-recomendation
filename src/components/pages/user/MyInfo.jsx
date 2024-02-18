@@ -59,7 +59,7 @@ export default function MyInfo() {
   //   console.log(user);
   return (
     <>
-      <div className="p-8 bg-[url(myinfobg.svg)]">
+      <div className="p-8 bg-[url(/myinfobg.svg)]">
         <p className="text-center text-white font-bold text-4xl">MY INFO</p>
         <form
           onSubmit={handleSubmit(save)}

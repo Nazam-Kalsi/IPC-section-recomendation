@@ -14,7 +14,7 @@ function AdminHome() {
         <Button className='py-2 px-4 text-xl'>Update Complaints</Button>
       </Link>
     </div>
-    <div className="border flex-grow bg-[url(home.svg)] bg-cover">
+    <div className="border flex-grow bg-[url(/home.svg)] bg-cover">
 </div>
     </section>
   );

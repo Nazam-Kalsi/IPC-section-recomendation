@@ -13,7 +13,7 @@ function UserHome() {
    <Button className='py-2 px-4 text-xl'>View Complaints</Button>
     </Link>
 </div>
-<div className="border flex-grow bg-[url(home.svg)] bg-cover">
+<div className="border flex-grow bg-[url(/home.svg)] bg-cover">
   
 </div>
 </section>

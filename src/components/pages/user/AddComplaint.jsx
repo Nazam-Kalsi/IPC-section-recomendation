@@ -106,7 +106,7 @@ function AddComplaint() {
   return (
     <>
           {loader && <Loading />}
-    <div className=" flex justify-center bg-[url(bg.svg)] bg-bottom bg-no-repeat bg-cover">
+    <div className=" flex justify-center bg-[url(/bg.svg)] bg-bottom bg-no-repeat bg-cover">
       <form
         onSubmit={handleSubmit(addComplaint)}
         className="border m-6 p-8 w-2/5 rounded-2xl bg-blur backdrop-blur bg-white/50"

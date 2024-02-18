@@ -6,7 +6,7 @@ import Spline from "@splinetool/react-spline";
 function Home() {
   return (
     <section className="lg:flex lg:justify-around">
-      <div className="flex-grow min-h-96 h-[calc(100vh-5rem)] bg-[url(home.svg)]  bg-cover">
+      <div className="flex-grow min-h-96 h-[calc(100vh-5rem)] bg-[url(/home.svg)]  bg-cover">
         {/* <Spline scene="https://prod.spline.design/sM1GVVO227D2jbh5/scene.splinecode" /> */}
         {/* <Spline scene="https://prod.spline.design/p7xEEV-5elHa9EBb/scene.splinecode" /> */}
 

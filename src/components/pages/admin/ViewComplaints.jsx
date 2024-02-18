@@ -23,7 +23,7 @@ function ViewComplaints() {
     <>
       {loader && <Loading />}
       <p className="text-center mt-5 font-bold  text-4xl font-sans text-primary border-b pb-2 ">MY COMPLAINTS</p>
-     <div className="bg-[url(databg.svg)] flex flex-wrap gap-6 justify-between p-4 ">
+     <div className="bg-[url(/databg.svg)] flex flex-wrap gap-6 justify-between p-4 ">
 
       {complaints &&
         complaints.map((complaint) => {
