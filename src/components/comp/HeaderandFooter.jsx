@@ -19,11 +19,11 @@ export function Header() {
       link: (user?.type=='admin')?"/adminhome":"/userhome",
       activation: user?.$id ? true : false,
     },
-    {
-      name: "About",
-      link: "/about",
-      activation: user?.$id ? true : false,
-    },
+    // {
+    //   name: "About",
+    //   link: "/about",
+    //   activation: user?.$id ? true : false,
+    // },
     {
       name: "login",
       link: "/login",
@@ -39,8 +39,8 @@ export function Header() {
     <>
       <header className= " bg-gray-900">
         <nav className="flex items-center justify-between mx-10">
-          <p className="text-3xl font-bold cursor-default  flex items-center gap-3">
-            <img src="/Logo.svg" alt="Logo" class="invert"/>
+          <p className="sm:text-3xl font-bold cursor-default  flex items-center gap-3">
+            <img src="/Logo.svg" alt="Logo" className="invert"/>
             <Link to="" className="text-white">
               Online <span className="text-primary-600">FIR</span>
             </Link>

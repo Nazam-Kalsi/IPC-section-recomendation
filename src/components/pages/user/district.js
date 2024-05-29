@@ -17,7 +17,7 @@ const punjabDistricts = [
   "Pathankot",
   "Patiala",
   "Rupnagar (Ropar)",
-  "Sahibzada Ajit Singh Nagar (Mohali)",
+  "Ajit Singh Nagar",
   "Sangrur",
   "Tarn Taran",
 ];

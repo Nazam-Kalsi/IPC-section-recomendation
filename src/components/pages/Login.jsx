@@ -21,13 +21,12 @@ function Login() {
   } = useForm();
 
   let login = async (data) => {
-    setLoader(true)
+    setLoader(true);
     let user = await auth.login(data);
     if (user) {
       let current = await auth.currentUser();
       if (current) {
-        // dispatch(setUser(current));
-
+        dispatch(setUser(current));
         if (storedata)
           await userData.storeData({ ...storedata, userid: current.$id });
         else {
@@ -37,7 +36,7 @@ function Login() {
             dispatch(setUser({ ...current, phone: userinfo.phone }));
             if (userinfo?.userType == "common") navigate("/userhome");
             else navigate("/adminhome");
-            console.log(userinfo);
+            // console.log(userinfo);
           }
         }
       }
@@ -50,7 +49,7 @@ function Login() {
       <div className=" flex justify-center items-center h-[calc(100vh-5rem)] bg-[url(/bg.svg)] bg-bottom bg-no-repeat bg-cover">
         <form
           onSubmit={handleSubmit(login)}
-          className="border m-6 p-8 w-2/5 rounded-2xl bg-blur  backdrop-blur bg-white/50"
+          className="border m-6 p-8 sm:w-2/5 rounded-2xl bg-blur  backdrop-blur bg-white/50"
         >
           <p className="text-center text-primary-300 font-bold text-2xl">
             LOGIN

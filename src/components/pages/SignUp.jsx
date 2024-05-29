@@ -37,7 +37,7 @@ function SignUp() {
 
     <div className=" flex justify-center bg-[url(/bg.svg)] bg-bottom bg-no-repeat bg-cover">
       <form
-        className="border m-6 p-8 w-2/5 rounded-2xl bg-blur  backdrop-blur bg-white/50"
+        className="border sm:m-6 sm:p-8 m-2 p-2 sm:w-2/5 rounded-2xl bg-blur  backdrop-blur bg-white/50"
         onSubmit={handleSubmit(DataHandler)}
       >
         <p className="text-center text-primary-300 font-bold text-2xl">

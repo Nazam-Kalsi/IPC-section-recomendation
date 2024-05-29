@@ -25,17 +25,17 @@ function GetComplaint() {
 return complaints ? (
   <>
   <p className="text-center mt-5 font-bold  text-4xl font-sans text-primary border-b pb-2 ">MY COMPLAINTS</p>
-     <div className="bg-[url(/databg.svg)] flex flex-wrap gap-6 justify-between p-4 ">
+     <div className="bg-[url(/databg.svg)] flex flex-wrap sm:gap-6 justify-between p-4 ">
         {
             complaints.map((individual)=>{
               return(
                 ( user.$id==individual.userId) ?
-                    <div key={individual.$id} className="border-2 bg-slate-100/50 basis-[28%] p-2 m-4">
+                    <div key={individual.$id} className="border-2 bg-slate-100/50 sm:basis-[28%] p-2 mb-2 sm:m-4">
                       <ComplaintData name='User ID' value={individual.userId}/>
+                      <ComplaintData name='Complaint ID ' value={individual.$id}/>
                       <ComplaintData name='Name' value={individual.name}/>
                       <ComplaintData name='Phone Number' value={individual.phoneNo}/>
                       <ComplaintData name='Date' value={individual.date.substring(0,10)}/>
-                      <ComplaintData name='Complaint ID ' value={individual.$id}/>
                       <ComplaintData name='Complaint Status ' value={individual.status}/>
                       <ComplaintData name='Complaint ' value={individual.fir}/>
                     </div>

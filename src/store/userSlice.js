@@ -15,7 +15,7 @@ export const authSlice = createSlice({
       } 
     
       else {
-        state.user = {...(state.user),...(action.payload)};
+        state.user = {...state.user,...action.payload};
         }
       state.status = true;
     },
