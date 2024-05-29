@@ -21,7 +21,7 @@ export default function MyInfo() {
     getValues,
   } = useForm({
     defaultValues: {
-      userId: `${user?.userid}`,
+      userId: `${user?.$id}`,
       firstname: `${user?.firstname}`,
       lastname: `${user?.lastname}`,
       addahar: `${user?.addahar}`,

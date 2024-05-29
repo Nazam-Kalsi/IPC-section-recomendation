@@ -11,7 +11,9 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     auth.currentUser().then((user) => {
-      dispatch(setUser(user));
+      if(user!='User (role: guests) missing scope (account)'){
+        dispatch(setUser(user));
+      }
       userData.getInfo(user.$id).then((res) => {
         dispatch(setUser(res));
       });

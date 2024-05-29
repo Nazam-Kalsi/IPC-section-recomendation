@@ -19,14 +19,13 @@ function SignUp() {
   let DataHandler = async (data) => {
     setLoader(true);
     console.log(data);
-    dispatch(setUser(data));
+    dispatch(setUser({...data,userType:'common'}));
     const newUser = await auth.signup(
       data.email,
       data.password,
       data.firstname
     );
     if (newUser) {
-
       navigate("/login");
     }
   };
@@ -130,6 +129,12 @@ function SignUp() {
               value: true,
               message: "This is required field",
             },
+            minLength:8,
+            validate:{
+              char:(value)=>
+                /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm.test(value) ||
+              "should Contain 8 letters including capital letter and numbers",
+            }
           })}
         />
         <p className="text-red-500">{errors.password?.message}</p>

@@ -14,6 +14,7 @@ function Login() {
   // Redux State
   const dispatch = useDispatch();
   const storedata = useSelector((state) => state.authreducer.user);
+  console.log(storedata);
   const {
     register,
     handleSubmit,
@@ -27,19 +28,21 @@ function Login() {
       let current = await auth.currentUser();
       if (current) {
         dispatch(setUser(current));
-        if (storedata)
-          await userData.storeData({ ...storedata, userid: current.$id });
+        if (storedata){
+          await userData.storeData({ ...storedata,userid:current.$id });
+          if (storedata?.userType == "common") navigate("/userhome");
+          else navigate("/adminhome");
+        }
         else {
           const userinfo = await userData.getInfo(current.$id);
           if (userinfo) {
             dispatch(setUser(userinfo));
             dispatch(setUser({ ...current, phone: userinfo.phone }));
-            if (userinfo?.userType == "common") navigate("/userhome");
-            else navigate("/adminhome");
-            // console.log(userinfo);
           }
+          if (userinfo?.userType == "common") navigate("/userhome");
+          else navigate("/adminhome");
         }
-      }
+          }
     }
   };
 

@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, NavLink } from "react-router-dom";
 import { removeUser } from "../../store/userSlice";
 import auth from "../../AppWrite/auth";
 export function Header() {
-  const user = useSelector((state) => state.authreducer.user);
-  // console.log(user);
+    const user = useSelector((state) => state.authreducer.user);
+    console.log(user);
   const dispatch = useDispatch();
   const navigation = useNavigate();
   const logout = async () => {
@@ -17,7 +17,7 @@ export function Header() {
     {
       name: "Home",
       link: (user?.type=='admin')?"/adminhome":"/userhome",
-      activation: user?.$id ? true : false,
+      activation: (user?.$id || user?.current?.$id) ? true : false,
     },
     // {
     //   name: "About",
@@ -68,7 +68,7 @@ export function Header() {
               ) : null;
             })}
           </ul>
-          {user?.$id && (
+          {user?.$id  && (
             <div className="flex items-center gap-4">
               <Link className="group relative p-2 " to="/myinfo">
                 <p className="text-white">
