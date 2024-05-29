@@ -5,7 +5,6 @@ import { removeUser } from "../../store/userSlice";
 import auth from "../../AppWrite/auth";
 export function Header() {
     const user = useSelector((state) => state.authreducer.user);
-    console.log(user);
   const dispatch = useDispatch();
   const navigation = useNavigate();
   const logout = async () => {

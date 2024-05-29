@@ -63,7 +63,7 @@ export default function MyInfo() {
         <p className="text-center text-white font-bold text-4xl">MY INFO</p>
         <form
           onSubmit={handleSubmit(save)}
-          className="border rounded-xl p-8 w-3/5 mx-auto backdrop-blur bg-white/50"
+          className="border rounded-xl p-8 sm:w-3/5 mx-auto backdrop-blur bg-white/50"
         >
           <Input
             className="bg-transparent"

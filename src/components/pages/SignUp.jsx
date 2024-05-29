@@ -139,8 +139,8 @@ function SignUp() {
         />
         <p className="text-red-500">{errors.password?.message}</p>
         <p className="flex my-5">
-          <input type="checkbox" className="mr-2" required />I agree with the
-          terms and conditions
+          <input type="checkbox" id="check" className="mr-2" required />
+          <label htmlFor="check">I agree with the terms and conditions</label>
         </p>
         <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white ">
           Sign in

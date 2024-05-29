@@ -27,13 +27,16 @@ function Login() {
     if (user) {
       let current = await auth.currentUser();
       if (current) {
+        //sign-up
         dispatch(setUser(current));
         if (storedata){
           await userData.storeData({ ...storedata,userid:current.$id });
+          dispatch(setUser(storedata));
           if (storedata?.userType == "common") navigate("/userhome");
           else navigate("/adminhome");
         }
         else {
+          //log-in
           const userinfo = await userData.getInfo(current.$id);
           if (userinfo) {
             dispatch(setUser(userinfo));
